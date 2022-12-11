@@ -39,8 +39,8 @@ type Status struct {
 func StatusForLogger(l log.Logger) *Status {
 	s := &Status{
 		logger:        l,
-		successFormat: " ✓ %s\n",
-		failureFormat: " ✗ %s\n",
+		successFormat: " [OK] %s\n",
+		failureFormat: " [FAIL] %s\n",
 	}
 	// if we're using the CLI logger, check for if it has a spinner setup
 	// and wire the status to that
@@ -48,8 +48,8 @@ func StatusForLogger(l log.Logger) *Status {
 		if v2, ok := v.writer.(*Spinner); ok {
 			s.spinner = v2
 			// use colored success / failure messages
-			s.successFormat = " \x1b[32m✓\x1b[0m %s\n"
-			s.failureFormat = " \x1b[31m✗\x1b[0m %s\n"
+			s.successFormat = " \x1b[32m[OK]\x1b[0m %s\n"
+			s.failureFormat = " \x1b[31m[FAIL]\x1b[0m %s\n"
 		}
 	}
 	return s

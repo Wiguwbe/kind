@@ -58,7 +58,7 @@ func (a *Action) Execute(ctx *actions.ActionContext) error {
 	}
 
 	// otherwise notify the user
-	ctx.Status.Start("Configuring the external load balancer ⚖️")
+	ctx.Status.Start("Configuring the external load balancer")
 	defer ctx.Status.End(false)
 
 	// collect info about the existing controlplane nodes

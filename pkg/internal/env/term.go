@@ -72,7 +72,7 @@ func isSmartTerminal(w io.Writer, GOOS string, lookupEnv func(string) (string, b
 	if term == "dumb" {
 		return false
 	}
-	// st has some bug 🤷‍♂️
+	// st has some bug
 	// https://github.com/kubernetes-sigs/kind/issues/1892
 	if term == "st-256color" {
 		return false

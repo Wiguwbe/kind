@@ -198,10 +198,10 @@ func logUsage(logger log.Logger, name, explicitKubeconfigPath string) {
 
 func logSalutation(logger log.Logger) {
 	salutations := []string{
-		"Have a nice day! 👋",
-		"Thanks for using kind! 😊",
-		"Not sure what to do next? 😅  Check out https://kind.sigs.k8s.io/docs/user/quick-start/",
-		"Have a question, bug, or feature request? Let us know! https://kind.sigs.k8s.io/#community 🙂",
+		"Have a nice day!",
+		"Thanks for using kind!",
+		"Not sure what to do next? Check out https://kind.sigs.k8s.io/docs/user/quick-start/",
+		"Have a question, bug, or feature request? Let us know! https://kind.sigs.k8s.io/#community",
 	}
 	r := rand.New(rand.NewSource(time.Now().UTC().UnixNano()))
 	s := salutations[r.Intn(len(salutations))]

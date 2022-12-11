@@ -50,7 +50,7 @@ func (a *Action) Execute(ctx *actions.ActionContext) error {
 	}
 	ctx.Status.Start(
 		fmt.Sprintf(
-			"Waiting ≤ %s for control-plane = Ready ⏳",
+			"Waiting ≤ %s for control-plane = Ready",
 			formatDuration(a.waitTime),
 		),
 	)
@@ -87,13 +87,13 @@ func (a *Action) Execute(ctx *actions.ActionContext) error {
 	isReady := waitForReady(node, startTime.Add(a.waitTime), selectorLabel)
 	if !isReady {
 		ctx.Status.End(false)
-		ctx.Logger.V(0).Info(" • WARNING: Timed out waiting for Ready ⚠️")
+		ctx.Logger.V(0).Info(" • WARNING: Timed out waiting for Ready")
 		return nil
 	}
 
 	// mark success
 	ctx.Status.End(true)
-	ctx.Logger.V(0).Infof(" • Ready after %s 💚", formatDuration(time.Since(startTime)))
+	ctx.Logger.V(0).Infof(" • Ready after %s", formatDuration(time.Since(startTime)))
 	return nil
 }
 

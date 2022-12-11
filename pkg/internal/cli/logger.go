@@ -91,7 +91,7 @@ func (l *Logger) writeBuffer(buf *bytes.Buffer) {
 		buf.WriteByte('\n')
 	}
 	// TODO: should we handle this somehow??
-	// Who logs for the logger? 🤔
+	// Who logs for the logger?
 	_, _ = l.write(buf.Bytes())
 }
 

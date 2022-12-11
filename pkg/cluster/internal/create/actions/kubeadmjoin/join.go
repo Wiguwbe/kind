@@ -76,7 +76,7 @@ func joinSecondaryControlPlanes(
 	ctx *actions.ActionContext,
 	secondaryControlPlanes []nodes.Node,
 ) error {
-	ctx.Status.Start("Joining more control-plane nodes 🎮")
+	ctx.Status.Start("Joining more control-plane nodes")
 	defer ctx.Status.End(false)
 
 	// TODO(bentheelder): it's too bad we can't do this concurrently
@@ -96,7 +96,7 @@ func joinWorkers(
 	ctx *actions.ActionContext,
 	workers []nodes.Node,
 ) error {
-	ctx.Status.Start("Joining worker nodes 🚜")
+	ctx.Status.Start("Joining worker nodes")
 	defer ctx.Status.End(false)
 
 	// create the workers concurrently

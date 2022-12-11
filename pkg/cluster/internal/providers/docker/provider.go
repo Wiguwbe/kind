@@ -80,8 +80,7 @@ func (p *provider) Provision(status *cli.Status, cfg *config.Cluster) (err error
 	}
 
 	// actually provision the cluster
-	icons := strings.Repeat("📦 ", len(cfg.Nodes))
-	status.Start(fmt.Sprintf("Preparing nodes %s", icons))
+	status.Start("Preparing nodes")
 	defer func() { status.End(err == nil) }()
 
 	// plan creating the containers

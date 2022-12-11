@@ -35,7 +35,7 @@ func TestTOML(t *testing.T) {
 	cases := []testCase{
 		{
 			Name:         "invalid TOML",
-			ToPatch:      `🗿`,
+			ToPatch:      ``,
 			ExpectError:  true,
 			ExpectOutput: "",
 		},
@@ -66,7 +66,7 @@ func TestTOML(t *testing.T) {
   shim_debug = true
 [plugins.cri.containerd.runtimes.runsc]
   runtime_type = "io.containerd.runsc.v1"`,
-			Patches:     []string{"🏰"},
+			Patches:     []string{""},
 			ExpectError: true,
 		},
 		{
@@ -76,7 +76,7 @@ func TestTOML(t *testing.T) {
   shim_debug = true
 [plugins.cri.containerd.runtimes.runsc]
   runtime_type = "io.containerd.runsc.v1"`,
-			PatchesJSON6902: []string{"🏰"},
+			PatchesJSON6902: []string{""},
 			ExpectError:     true,
 		},
 		{

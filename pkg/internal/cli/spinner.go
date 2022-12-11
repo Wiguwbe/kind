@@ -26,21 +26,12 @@ import (
 
 // custom CLI loading spinner for kind
 var spinnerFrames = []string{
-	"⠈⠁",
-	"⠈⠑",
-	"⠈⠱",
-	"⠈⡱",
-	"⢀⡱",
-	"⢄⡱",
-	"⢄⡱",
-	"⢆⡱",
-	"⢎⡱",
-	"⢎⡰",
-	"⢎⡠",
-	"⢎⡀",
-	"⢎⠁",
-	"⠎⠁",
-	"⠊⠁",
+	"     ",
+	" .   ",
+	" ..  ",
+	" ... ",
+	"  .. ",
+	"   . ",
 }
 
 // Spinner is a simple and efficient CLI loading spinner used by kind
@@ -106,7 +97,7 @@ func (s *Spinner) Start() {
 	// flag that we've started
 	s.running = true
 	// start / create a frame ticker
-	s.ticker = time.NewTicker(time.Millisecond * 100)
+	s.ticker = time.NewTicker(time.Second)
 	// spin in the background
 	go func() {
 		// write frames forever (until signaled to stop)

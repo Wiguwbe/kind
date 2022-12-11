@@ -45,7 +45,7 @@ func NewAction() actions.Action {
 
 // Execute runs the action
 func (a *Action) Execute(ctx *actions.ActionContext) error {
-	ctx.Status.Start("Writing configuration 📜")
+	ctx.Status.Start("Writing configuration")
 	defer ctx.Status.End(false)
 
 	providerInfo, err := ctx.Provider.Info()
