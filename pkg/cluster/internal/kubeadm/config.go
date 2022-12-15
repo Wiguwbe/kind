@@ -43,6 +43,9 @@ type ConfigData struct {
 	// The API server external listen IP (which we will port forward)
 	APIServerAddress string
 
+	// Extra certSAN's for kubeadm
+	APIServerSANs []string
+
 	// this should really be used for the --provider-id flag
 	// ideally cluster config should not depend on the node backend otherwise ...
 	NodeProvider string
@@ -190,7 +193,12 @@ controlPlaneEndpoint: "{{ .ControlPlaneEndpoint }}"
 # so we need to ensure the cert is valid for localhost so we can talk
 # to the cluster after rewriting the kubeconfig to point to localhost
 apiServer:
-  certSANs: [localhost, "{{.APIServerAddress}}"]
+  certSANs:
+  - localhost
+  - "{{.APIServerAddress}}"
+  {{ range .APIServerSANs }}
+  - "{{ . }}"
+  {{ end }}
   extraArgs:
     "runtime-config": "{{ .RuntimeConfigString }}"
 {{ if .FeatureGates }}
@@ -327,7 +335,12 @@ controlPlaneEndpoint: "{{ .ControlPlaneEndpoint }}"
 # so we need to ensure the cert is valid for localhost so we can talk
 # to the cluster after rewriting the kubeconfig to point to localhost
 apiServer:
-  certSANs: [localhost, "{{.APIServerAddress}}"]
+  certSANs:
+  - localhost
+  - "{{.APIServerAddress}}"
+  {{ range .APIServerSANs }}
+  - "{{ . }}"
+  {{ end }}
   extraArgs:
     "runtime-config": "{{ .RuntimeConfigString }}"
 {{ if .FeatureGates }}
