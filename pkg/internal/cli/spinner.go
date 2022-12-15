@@ -30,8 +30,10 @@ var spinnerFrames = []string{
 	" .   ",
 	" ..  ",
 	" ... ",
-	"  .. ",
-	"   . ",
+	" ....",
+	"  ...",
+	"   ..",
+	"    .",
 }
 
 // Spinner is a simple and efficient CLI loading spinner used by kind
